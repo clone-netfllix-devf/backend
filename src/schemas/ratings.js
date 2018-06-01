@@ -10,7 +10,7 @@ var RatingSchema = new Schema({
     type : String,
     require: true
   },
-  'edad' : {
+  'age' : {
     type : Number,
     require: true
   },
