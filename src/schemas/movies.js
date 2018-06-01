@@ -3,7 +3,7 @@ var _mongoose = require('mongoose');
 
 var Schema = _mongoose.default.Schema;
 
-var BookSchema = new Schema({
+var MovieSchema = new Schema({
 
     'image': {
         type: String,
@@ -55,4 +55,4 @@ var BookSchema = new Schema({
     }
 }, { 'collection': 'movie', timestamps: true });
 
-exports.default = _mongoose.default.model('movie', BookSchema);
+exports.default = _mongoose.default.model('movie', MovieSchema);
