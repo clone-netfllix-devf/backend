@@ -30,7 +30,7 @@ var MovieSchema = new Schema({
         require: true
     },
     'duration': {
-        type: Decimal128,
+        type: String,
         require: true
     },
     'clasification': {
