@@ -52,7 +52,7 @@ var UserSchema = new Schema({
         require: true
 
     },
-  'passwordEncoded': {
+  'password': {
 
         type: String,
 
@@ -66,6 +66,6 @@ var UserSchema = new Schema({
         require: true
 
     },
-{ 'collection': 'user', timestamps: true });
+  },{'collection': 'user', timestamps: true });
 
 exports.default = _mongoose.default.model('user', UserSchema);
