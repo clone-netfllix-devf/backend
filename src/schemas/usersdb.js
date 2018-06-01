@@ -40,8 +40,9 @@ var UserSchema = new Schema({
     },
   'preferences': {
 
-        type: String,
+	type:[Schema.Types.ObjectId],
 
+	ref:'genre',
         require: false
     },
   'email': {
