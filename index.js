@@ -21,10 +21,10 @@ app.get('/', (req,res) => {
 
 app.get('/users',(req,res) => {
  var user = new User({
-     "name":"prueba",
+     "name":"PRUEBON",
      "lastname":"prueba",
      "email":"prueba@gmail.com",
-     "password":"password"
+     "password":"passss"
  })
 
 user.save((err) => {
@@ -33,6 +33,13 @@ user.save((err) => {
 })
 
 })
+
+//get user list
+app.get('/userlist' , function (req , res) {
+ User.find({}).then(function (users) {
+ res.send(users);
+ });
+});
 
 app.listen(port, () => {
     console.log("Server Works");
