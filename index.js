@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
+var User  = require('./src/schemas/usersdb');
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -16,6 +17,21 @@ db.on('error',() => console.log("Failed to conect to database"))
 
 app.get('/', (req,res) => {
     res.send("Hello World");
+})
+
+app.get('/users',(req,res) => {
+ var user = new User({
+     "name":"prueba",
+     "lastname":"prueba",
+     "email":"prueba@gmail.com",
+     "password":"password"
+ })
+
+user.save((err) => {
+    if(err) throw err
+    res.send("creado usuario"); 
+})
+
 })
 
 app.listen(port, () => {

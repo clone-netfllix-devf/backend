@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 
 
-var Schema = _mongoose.default.Schema;
+var Schema = _mongoose.Schema;
 
 var UserSchema = new Schema({
   'name': {
@@ -71,10 +71,9 @@ var UserSchema = new Schema({
   },{'collection': 'user', timestamps: true });
 
   UserSchema.pre('save',(next) => {
-    let user = this;
-
-    if (!user.isModified('password')) return next();
-
+    let user = this;  
+    console.log(user)
+    
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
       if (err) return next(err);
   
@@ -102,4 +101,4 @@ var UserSchema = new Schema({
     });
 };
 
-exports.default = _mongoose.default.model('user', UserSchema);
+module.exports = _mongoose.model('user', UserSchema);
