@@ -3,6 +3,9 @@ const graphql = require('graphql');
 const GenreType = require('./genres');
 const Genre = require('../../schemas/genres')
 
+const RatingType = require('./ratings');
+const Rating = require('../../schemas/ratings')
+
 const MovieType = new graphql.GraphQLObjectType({
     name: 'Movies',
     description: 'Types of Movies',
@@ -31,8 +34,12 @@ const MovieType = new graphql.GraphQLObjectType({
         duration: {
             type:graphql.GraphQLString
         },
-        clasification: {
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+        rating: {
+            type:RatingType,
+            resolve(movie){
+                const {rating} = movie
+                return Rating.findById(rating).exec()
+            }
         },
         genre: {
             type:GenreType,
