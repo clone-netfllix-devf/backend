@@ -3,5 +3,5 @@ var singleGenres = require('./single');
 
 module.exports = {
    allRatings,
-   singleGenres
+   singleRatings
 }
