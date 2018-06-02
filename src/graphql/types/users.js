@@ -14,7 +14,7 @@ var UserType = new _graphql.GraphQLObjectType({
 				type : _graphql.GraphQLString
 			},
 			isPremium : {
-				type : _graphql.GraphQLScalarType
+				type : _graphql.GraphQLBoolean
 			},
 			address : {
 				type : _graphql.GraphQLString
