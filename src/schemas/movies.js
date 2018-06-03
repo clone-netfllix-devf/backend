@@ -33,9 +33,9 @@ var MovieSchema = new Schema({
         type: String,
         require: true
     },
-    'clasification': {
+    'rating': {
         type: Schema.Types.ObjectId,
-        ref: 'clasification'
+        ref: 'rating'
     },
     'genre': {
         type: Schema.Types.ObjectId,
