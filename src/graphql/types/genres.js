@@ -10,7 +10,7 @@ const GenreType = new graphql.GraphQLObjectType({
             type:graphql.GraphQLNonNull(graphql.GraphQLID)
         },
         name:{
-            type:graphql.GraphQLString
+            type:graphql.GraphQl
         },
         description:{
             type:graphql.GraphQLString
