@@ -1,14 +1,14 @@
-const graphql  = require('graphql');
+import  * as graphql  from 'graphql';
 
-const User = require('../../../schemas/users');
-const UserType = require('../../types/users');
+import  User from '../../../schemas/users';
+import  UserType from '../../types/users';
 
 const querySingleUser = {
 
     type:UserType,
     args:{
         id:{
-            name:ID,
+            name:'ID',
             type:graphql.GraphQLNonNull(graphql.GraphQLID)
         }
     },
@@ -19,4 +19,4 @@ const querySingleUser = {
 
 }
 
-module.exports = querySingleUser;
+export default querySingleUser;

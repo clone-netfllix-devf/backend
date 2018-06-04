@@ -1,7 +1,7 @@
-const graphql  = require('graphql');
+import  * as graphql  from 'graphql';
 
-const Genre = require('../../../schemas/users');
-const GenreType = require('../../types/users');
+import  User from '../../../schemas/users';
+import  UserType from '../../types/users';
 
 const queryAllUsers = {
 
@@ -14,4 +14,4 @@ const queryAllUsers = {
 
 }
 
-module.exports = queryAllUsers;
+export default queryAllUsers;

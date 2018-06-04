@@ -1,8 +1,8 @@
-var allRatings  = require('./all');
-var singleGenres = require('./single');
+import  allRatings from './all';
+import  singleRatings from './single';
 
 
-module.exports = {
+export default {
    allRatings,
    singleRatings
 }

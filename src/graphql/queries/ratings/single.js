@@ -1,14 +1,14 @@
-const graphql  = require('graphql');
+import *  as graphql from 'graphql';
 
-const Rating = require('../../../schemas/ratings');
-const RatingType = require('../../types/ratings');
+import Rating from '../../../schemas/ratings';
+import RatingType from '../../types/ratings';
 
 const querySingleRating = {
 
     type:RatingType,
     args:{
         id:{
-            name:ID,
+            name:'ID',
             type:graphql.GraphQLNonNull(graphql.GraphQLID)
         }
     },
@@ -19,4 +19,4 @@ const querySingleRating = {
 
 }
 
-module.exports = querySingleRating;
+export default querySingleRating;

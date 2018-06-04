@@ -1,7 +1,9 @@
-var express = require('express');
-var mongoose = require('mongoose');
+import express from 'express';
+import  mongoose from 'mongoose';
+import graphQLHTTP from 'express-graphql';
 
-var User  = require('./src/schemas/usersdb');
+import schema from './src/graphql';
+import User  from './src/schemas/users';
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -12,7 +14,11 @@ const db = mongoose.connection;
 db.on('error',() => console.log("Failed to conect to database"))
     .once('open', () => console.log("Connected to the database"))
 
-
+app.use('/graphql', graphQLHTTP(() => ({
+        schema,
+        graphiql:true,
+        pretty:true
+})))
 
 
 app.get('/', (req,res) => {
@@ -20,17 +26,17 @@ app.get('/', (req,res) => {
 })
 
 app.get('/users',(req,res) => {
- var user = new User({
-     "name":"PRUEBON",
-     "lastname":"prueba",
-     "email":"prueba@gmail.com",
-     "password":"passss"
- })
+    var user = new User({
+        "name":"PRUEBON",
+        "lastname":"prueba",
+        "email":"prueba@gmail.com",
+        "password":"passss"
+    })
 
-user.save((err) => {
-    if(err) throw err
-    res.send("creado usuario"); 
-})
+    user.save((err) => {
+        if(err) throw err
+        res.send("creado usuario"); 
+    })
 
 })
 

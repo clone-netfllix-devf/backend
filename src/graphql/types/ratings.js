@@ -1,20 +1,19 @@
-var _graphql = require('graphql');
+import * as graphql from 'graphql';
 
-var _Ratings = require('../../schemas/Ratings');
+import Ratings from '../../schemas/ratings';
 
-var RatingType = new _graphql.GraphQLObjectType({
+var RatingType = new graphql.GraphQLObjectType({
 	name : "Ratings",
 	description : "Ratings in database",
-	fields : function fields(){
-		return {
+	fields :() => ({
+		 
 			name :{
-				type: _graphql.GraphQLString
+				type: graphql.GraphQLString
 			},
 			description : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
-		};
-	}
+		}),
 });
 
-module.exports =  RatingType;
+export default  RatingType;

@@ -1,7 +1,7 @@
-var _mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
-var Schema = _mongoose.default.Schema;
+var Schema = mongoose.Schema;
 
 var MovieSchema = new Schema({
 
@@ -55,4 +55,4 @@ var MovieSchema = new Schema({
     }
 }, { 'collection': 'movie', timestamps: true });
 
-exports.default = _mongoose.default.model('movie', MovieSchema);
+export default mongoose.model('movie', MovieSchema);

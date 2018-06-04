@@ -1,7 +1,7 @@
-const graphql  = require('graphql');
+import * as  graphql  from 'graphql';
 
-const Genre = require('../../../schemas/genres');
-const GenreType = require('../../types/genres');
+import Genre from '../../../schemas/genres';
+import GenreType from '../../types/genres';
 
 const queryAllGenres = {
 
@@ -14,4 +14,4 @@ const queryAllGenres = {
 
 }
 
-module.exports = queryAllGenres;
+export default queryAllGenres;

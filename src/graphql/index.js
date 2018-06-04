@@ -1,20 +1,9 @@
-'use strict';
+import * as  graphql from 'graphql';
+import queries from './queries';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _graphql = require('graphql');
-
-var _mutations = require('./mutations');
-
-
-var _querys = require('./querys');
-
-
-module.exports = new _graphql.GraphQLSchema({
-    query: new _graphql.GraphQLObjectType({
+export default new graphql.GraphQLSchema({
+    query: new graphql.GraphQLObjectType({
         name: 'Query',
-        fields: _querys.default
+        fields: queries
     })
 });

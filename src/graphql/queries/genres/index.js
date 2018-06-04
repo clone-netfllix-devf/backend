@@ -1,7 +1,7 @@
-var allGenres  = require('./all');
-var singleGenres = require('./single');
+import  allGenres  from './all';
+import singleGenres from './single';
 
-module.exports = {
+export default {
    allGenres,
    singleGenres
 }

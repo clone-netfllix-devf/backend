@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.default.Schema;
+import  mongoose  from 'mongoose';
+
+const Schema = mongoose.Schema;
 
 var RatingSchema = new Schema({
   'name': {
@@ -15,4 +16,4 @@ var RatingSchema = new Schema({
     require: true
   },
 },{'collection': 'rating', timestamps: true});
-exports.default = moongose.default.model('rating',RatingSchema);
+export default mongoose.model('rating',RatingSchema);

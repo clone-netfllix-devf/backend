@@ -1,4 +1,4 @@
-const graphql = require('graphql');
+import * as  graphql from 'graphql';
 
 
 const GenreType = new graphql.GraphQLObjectType({
@@ -10,7 +10,7 @@ const GenreType = new graphql.GraphQLObjectType({
             type:graphql.GraphQLNonNull(graphql.GraphQLID)
         },
         name:{
-            type:graphql.GraphQl
+            type:graphql.GraphQLString
         },
         description:{
             type:graphql.GraphQLString
@@ -19,4 +19,4 @@ const GenreType = new graphql.GraphQLObjectType({
     })
 })
 
-module.exports =  GenreType;
+export default GenreType;

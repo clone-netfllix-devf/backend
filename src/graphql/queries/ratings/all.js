@@ -1,7 +1,7 @@
-const graphql  = require('graphql');
+import *  as graphql from 'graphql';
 
-const Rating = require('../../../schemas/ratings');
-const RatingType = require('../../types/ratings');
+import Rating from '../../../schemas/ratings';
+import RatingType from '../../types/ratings';
 
 const queryAllRatings = {
 
@@ -14,4 +14,4 @@ const queryAllRatings = {
 
 }
 
-module.exports = queryAllRatings;
+export default queryAllRatings;

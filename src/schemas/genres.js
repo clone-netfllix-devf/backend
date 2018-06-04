@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-var GenreSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const GenreSchema = new Schema({
   'name':{
       type : String,
       require : true
@@ -11,4 +12,6 @@ var GenreSchema = new Schema({
         require: true
   }
 },{'collection': 'genre', timestamps: true});
-exports.default = moongose.default.model('genre',GenreSchema);
+
+
+export default mongoose.model('genre',GenreSchema);

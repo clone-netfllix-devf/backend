@@ -1,38 +1,38 @@
-var _graphql = require('graphql');
+import * as graphql from 'graphql';
 
-var _Users = require('../../schemas/usersdb');
+import Users from '../../schemas/users';
 
-var UserType = new _graphql.GraphQLObjectType({
+var UserType = new graphql.GraphQLObjectType({
 	name : "Users",
 	description : "Users in database",
-	fields : function fields(){
-		return {
+	fields :() => ({
+		
 			name :{
-				type: _graphql.GraphQLString
+				type: graphql.GraphQLString
 			},
 			lastName : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
 			isPremium : {
-				type : _graphql.GraphQLBoolean
+				type : graphql.GraphQLBoolean
 			},
 			address : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
 			ccHash : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
 			email : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
 			password : {
-				type : _graphql.GraphQLString
+				type : graphql.GraphQLString
 			},
 			birthDate : {
-				type : _graphql.GraphQLDate
+				type : graphql.GraphQLString
 			},
-		};
-	}
+		}),
+	
 });
 
-module.exports =  UserType;
+export default  UserType;

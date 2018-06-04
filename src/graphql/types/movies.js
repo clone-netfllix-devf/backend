@@ -1,10 +1,10 @@
-const graphql = require('graphql');
+import * as  graphql from 'graphql';
 
-const GenreType = require('./genres');
-const Genre = require('../../schemas/genres')
+import GenreType from './genres';
+import Genre from '../../schemas/genres';
 
-const RatingType = require('./ratings');
-const Rating = require('../../schemas/ratings')
+import RatingType from './ratings';
+import Rating from '../../schemas/ratings';
 
 const MovieType = new graphql.GraphQLObjectType({
     name: 'Movies',
@@ -60,4 +60,4 @@ const MovieType = new graphql.GraphQLObjectType({
     })
 })
 
-module.exports = MovieType;
+export default MovieType;
