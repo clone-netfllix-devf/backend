@@ -1,7 +1,7 @@
 import * as  graphql  from 'graphql';
 
 import Movie from '../../../schemas/movies';
-import MovieType from '../../types/movies';
+import {MovieType} from '../../types/movies';
 
 const queryAllMovies = {
 
