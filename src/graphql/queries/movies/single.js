@@ -13,7 +13,7 @@ const querySingleMovie = {
         }
     },
     resolve(root,params){
-        const movie = Movie.findbyId(params.id).exec()
+        const movie = Movie.findById(params.id).exec()
         return movie
     }
 
