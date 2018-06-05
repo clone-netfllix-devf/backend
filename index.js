@@ -4,6 +4,7 @@ import graphQLHTTP from 'express-graphql';
 
 import schema from './src/graphql';
 import User  from './src/schemas/users';
+import Rating from './src/schemas/ratings';
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -36,6 +37,20 @@ app.get('/users',(req,res) => {
     user.save((err) => {
         if(err) throw err
         res.send("creado usuario"); 
+    })
+
+})
+
+app.get('/addrating',(req,res) => {
+    var rating = new Rating({
+        "name":"PG-13",
+        "description": "TEST",
+        "age":13
+    })
+
+    rating.save((err) => {
+        if(err) throw err
+        res.send("creado rating"); 
     })
 
 })

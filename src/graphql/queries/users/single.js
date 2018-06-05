@@ -1,15 +1,19 @@
-import  * as graphql  from 'graphql';
+import {
+    GraphQLID,
+    GraphQLNonNull
+
+} from 'graphql';
 
 import  User from '../../../schemas/users';
-import  UserType from '../../types/users';
+import  {UserType} from '../../types/users';
 
-const querySingleUser = {
+export default {
 
     type:UserType,
     args:{
         id:{
             name:'ID',
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            type: new GraphQLNonNull(GraphQLID)
         }
     },
     resolve(root,params){
@@ -19,4 +23,3 @@ const querySingleUser = {
 
 }
 
-export default querySingleUser;

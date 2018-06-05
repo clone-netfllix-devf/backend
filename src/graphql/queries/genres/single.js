@@ -1,22 +1,22 @@
-import * as  graphql  from 'graphql';
+import {
+    GraphQLID,
+    GraphQLNonNull
+
+} from 'graphql';
 
 import Genre from '../../../schemas/genres';
-import GenreType from '../../types/genres';
+import {GenreType} from '../../types/genres';
 
-const querySingleGenre = {
-
+export default  {
     type:GenreType,
     args:{
         id:{
             name:'ID',
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            type:new GraphQLNonNull(GraphQLID)
         }
     },
     resolve(root,params){
-        const genre = Genre.findbyId(params.id).exec()
-        return genre
+        return Genre.findById(params.id).exec();
     }
 
 }
-
-export default querySingleGenre;

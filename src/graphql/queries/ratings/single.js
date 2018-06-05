@@ -1,22 +1,23 @@
-import *  as graphql from 'graphql';
+import {
+    GraphQLID,
+    GraphQLNonNull
+
+} from 'graphql';
 
 import Rating from '../../../schemas/ratings';
-import RatingType from '../../types/ratings';
+import {RatingType} from '../../types/ratings';
 
-const querySingleRating = {
+export default {
 
     type:RatingType,
     args:{
         id:{
             name:'ID',
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            type: new GraphQLNonNull(GraphQLID)
         }
     },
-    resolve(root,params){
-        const rating = Rating.findbyId(params.id).exec()
-        return rating
+    resolve(root,params){  
+        return Rating.findbyId(params.id).exec()
     }
 
 }
-
-export default querySingleRating;

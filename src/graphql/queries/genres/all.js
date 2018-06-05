@@ -1,11 +1,13 @@
-import * as  graphql  from 'graphql';
+import {
+    GraphQLList
+    } from 'graphql';
 
 import Genre from '../../../schemas/genres';
-import GenreType from '../../types/genres';
+import {GenreType} from '../../types/genres';
 
-const queryAllGenres = {
+export default  {
 
-    type:new graphql.GraphQLList(GenreType),
+    type:new GraphQLList(GenreType),
     resolve(){
         const genres = Genre.find().exec()
         if(!genres) throw new Error("Error al traer generos")
@@ -14,4 +16,3 @@ const queryAllGenres = {
 
 }
 
-export default queryAllGenres;

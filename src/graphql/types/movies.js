@@ -6,7 +6,7 @@ import Genre from '../../schemas/genres';
 import RatingType from './ratings';
 import Rating from '../../schemas/ratings';
 
-const MovieType = new graphql.GraphQLObjectType({
+export const MovieType = new graphql.GraphQLObjectType({
     name: 'Movies',
     description: 'Types of Movies',
     fields: () => ({
@@ -60,4 +60,46 @@ const MovieType = new graphql.GraphQLObjectType({
     })
 })
 
-export default MovieType;
+export const MovieInputType = new GraphQLInputObjectType({
+    name:'MovieInput',
+    description:'Insert Movie',
+    fields: () => ({
+        image: {
+            type:graphql.GraphQLString
+        },
+        name: {
+            type:graphql.GraphQLString
+        },
+        synopsis: {
+            type:graphql.GraphQLString
+        },
+        director: {
+            type:graphql.GraphQLString
+        },
+        year: {
+            type:graphql.GraphQLInt
+        },
+        rank: {
+            type:graphql.GraphQLInt
+        },
+        duration: {
+            type:graphql.GraphQLString
+        },
+        rating: {
+            type:GraphQLString          
+        },
+        genre: {
+           type:GraphQLString
+        },
+        language: {
+            type:graphql.GraphQLString
+        },
+        premium: {
+            type:graphql.GraphQLBoolean
+        },
+        url: {
+            type:graphql.GraphQLString
+        }
+    })
+
+});

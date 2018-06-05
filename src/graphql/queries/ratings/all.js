@@ -1,7 +1,7 @@
 import *  as graphql from 'graphql';
 
 import Rating from '../../../schemas/ratings';
-import RatingType from '../../types/ratings';
+import {RatingType} from '../../types/ratings';
 
 const queryAllRatings = {
 
