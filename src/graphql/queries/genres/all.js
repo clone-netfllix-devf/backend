@@ -1,7 +1,7 @@
 import * as  graphql  from 'graphql';
 
 import Genre from '../../../schemas/genres';
-import GenreType from '../../types/genres';
+import {GenreType} from '../../types/genres';
 
 const queryAllGenres = {
 

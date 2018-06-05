@@ -1,7 +1,7 @@
 import * as  graphql from 'graphql';
 
 
-const GenreType = new graphql.GraphQLObjectType({
+export const GenreType = new graphql.GraphQLObjectType({
     name:"Genres",
     description:"Types of Genres",
     fields: () => ({
@@ -19,4 +19,18 @@ const GenreType = new graphql.GraphQLObjectType({
     })
 })
 
-export default GenreType;
+
+export const GenreInputType = new graphql.GraphQLInputObjectType({
+    name:"add_genres",
+    description:"Types of Genres",
+    fields: () => ({
+        name:{
+            type:graphql.GraphQLString
+        },
+        description:{
+            type:graphql.GraphQLString
+        }
+
+    })
+})
+
