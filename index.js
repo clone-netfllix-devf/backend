@@ -1,7 +1,9 @@
 import express from 'express';
-import  mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import graphQLHTTP from 'express-graphql';
 import bodyParser from 'body-parser';
+import {createToken} from './src/resolvers/create';
+import {verifyToken} from './src/resolvers/verify';
 
 import schema from './src/graphql';
 import User  from './src/schemas/users';
@@ -18,16 +20,44 @@ db.on('error',() => console.log("Failed to conect to database"))
 const jsonParser = bodyParser.json();
 
 app.use('/login',jsonParser,(req,res) => {
-
-})    
+    if (req.method === 'POST') {
+        const token = createToken(req.body.email, req.body.password)
+        if (token) { //send successful token
+            res.status(200).json({ token })
+        } else {
+            res.status(403).json({ //no token - invalid credentials
+                message: 'Login failed! Invalid credentials!'
+            })
+        }
+    }
+});
 
 app.use('/verifyToken',jsonParser,(req,res) => {
-
+    if (req.method === 'POST') {
+        try {
+            const token = req.headers['Authorization']
+            const user = verifyToken(token)
+            res.status(200).json({ user })
+        } catch (e) {
+            console.log(e.message)
+            res.status(401).json({ //unauthorized token
+                message: e.message
+            })
+        }
+    }
 })  
 
 //Middleware auth
 app.use('/graphql', (req,res,next) => {
-       
+    const token = req.headers['authorization']
+    try {
+        req.user = verifyToken(token)
+        next()
+    } catch (e) {
+        res.status(401).json({ //unauthorized token
+            message: e.message
+        })
+    }
 });
 
 app.use('/graphql', graphQLHTTP((req,res) => ({
