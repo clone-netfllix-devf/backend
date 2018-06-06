@@ -1,9 +1,9 @@
 import * as  graphql from 'graphql';
 
-import GenreType from './genres';
+import {GenreType} from './genres';
 import Genre from '../../schemas/genres';
 
-import RatingType from './ratings';
+import {RatingType} from './ratings';
 import Rating from '../../schemas/ratings';
 
 export const MovieType = new graphql.GraphQLObjectType({
@@ -34,20 +34,20 @@ export const MovieType = new graphql.GraphQLObjectType({
         duration: {
             type:graphql.GraphQLString
         },
-        // rating: {
-        //     type:RatingType,
-        //     resolve(movie){
-        //         const {rating} = movie
-        //         return Rating.findById(rating).exec()
-        //     }
-        // },
-        // genre: {
-        //     type:GenreType,
-        //     resolve(movie){
-        //         const {genre} = movie
-        //         return Genre.findById(genre).exec()
-        //     }
-        // },
+        rating: {
+            type:RatingType,
+            resolve(movie){
+                const {rating} = movie
+                return Rating.findById(rating).exec()
+            }
+        },
+        genre: {
+            type:GenreType,
+            resolve(movie){
+                const {genre} = movie
+                return Genre.findById(genre).exec()
+            }
+        },
         language: {
             type:graphql.GraphQLString
         },
@@ -85,20 +85,12 @@ export const MovieInputType = new graphql.GraphQLInputObjectType({
         duration: {
             type:graphql.GraphQLString
         },
-        // rating: {
-        //     type:RatingType,
-        //     resolve(movie){
-        //         const {rating} = movie
-        //         return Rating.findById(rating).exec()
-        //     }
-        // },
-        // genre: {
-        //     type:GenreType,
-        //     resolve(movie){
-        //         const {genre} = movie
-        //         return Genre.findById(genre).exec()
-        //     }
-        // },
+        rating: {
+            type:graphql.GraphQLString
+        },
+        genre: {
+            type:graphql.GraphQLString
+        },
         language: {
             type:graphql.GraphQLString
         },
