@@ -1,6 +1,7 @@
 import express from 'express';
 import  mongoose from 'mongoose';
 import graphQLHTTP from 'express-graphql';
+import bodyParser from 'body-parser';
 
 import schema from './src/graphql';
 import User  from './src/schemas/users';
@@ -14,10 +15,28 @@ const db = mongoose.connection;
 db.on('error',() => console.log("Failed to conect to database"))
     .once('open', () => console.log("Connected to the database"))
 
-app.use('/graphql', graphQLHTTP(() => ({
+const jsonParser = bodyParser.json();
+
+app.use('/login',jsonParser,(req,res) => {
+
+})    
+
+app.use('/verifyToken',jsonParser,(req,res) => {
+
+})  
+
+//Middleware auth
+app.use('/graphql', (req,res,next) => {
+       
+});
+
+app.use('/graphql', graphQLHTTP((req,res) => ({
         schema,
         graphiql:true,
-        pretty:true
+        pretty:true,
+        context:{
+            user:req.user
+        }
 })))
 
 
