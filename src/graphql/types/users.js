@@ -7,6 +7,10 @@ export const  UserType = new graphql.GraphQLObjectType({
 	name : "Users",
 	description : "Users in database",
 	fields :() => ({
+
+		_id: {
+            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+        },
 		
 			name :{
 				type: graphql.GraphQLString

@@ -27,7 +27,7 @@ app.use('/verifyToken',jsonParser,(req,res) => {
 
 //Middleware auth
 app.use('/graphql', (req,res,next) => {
-       
+    next()   
 });
 
 app.use('/graphql', graphQLHTTP((req,res) => ({
