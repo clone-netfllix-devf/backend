@@ -1,22 +1,22 @@
-const graphql  = require('graphql');
+import {
+    GraphQLID,
+    GraphQLNonNull
 
-const Genre = require('../../../schemas/genres');
-const GenreType = require('../../types/genres');
+} from 'graphql';
 
-const querySingleGenre = {
+import Genre from '../../../schemas/genres';
+import {GenreType} from '../../types/genres';
 
+export default  {
     type:GenreType,
     args:{
         id:{
-            name:ID,
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            name:'ID',
+            type:new GraphQLNonNull(GraphQLID)
         }
     },
     resolve(root,params){
-        const genre = Genre.findbyId(params.id).exec()
-        return genre
+        return Genre.findById(params.id).exec();
     }
 
 }
-
-module.exports = querySingleGenre;

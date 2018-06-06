@@ -1,9 +1,12 @@
-const graphql = require('graphql');
+import * as  graphql from 'graphql';
 
-const GenreType = require('./genres');
-const Genre = require('../../schemas/genres')
+import GenreType from './genres';
+import Genre from '../../schemas/genres';
 
-const MovieType = new graphql.GraphQLObjectType({
+import RatingType from './ratings';
+import Rating from '../../schemas/ratings';
+
+export const MovieType = new graphql.GraphQLObjectType({
     name: 'Movies',
     description: 'Types of Movies',
     fields: () => ({
@@ -31,8 +34,12 @@ const MovieType = new graphql.GraphQLObjectType({
         duration: {
             type:graphql.GraphQLString
         },
-        clasification: {
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+        rating: {
+            type:RatingType,
+            resolve(movie){
+                const {rating} = movie
+                return Rating.findById(rating).exec()
+            }
         },
         genre: {
             type:GenreType,
@@ -53,4 +60,46 @@ const MovieType = new graphql.GraphQLObjectType({
     })
 })
 
-module.exports = MovieType;
+export const MovieInputType = new GraphQLInputObjectType({
+    name:'MovieInput',
+    description:'Insert Movie',
+    fields: () => ({
+        image: {
+            type:graphql.GraphQLString
+        },
+        name: {
+            type:graphql.GraphQLString
+        },
+        synopsis: {
+            type:graphql.GraphQLString
+        },
+        director: {
+            type:graphql.GraphQLString
+        },
+        year: {
+            type:graphql.GraphQLInt
+        },
+        rank: {
+            type:graphql.GraphQLInt
+        },
+        duration: {
+            type:graphql.GraphQLString
+        },
+        rating: {
+            type:GraphQLString          
+        },
+        genre: {
+           type:GraphQLString
+        },
+        language: {
+            type:graphql.GraphQLString
+        },
+        premium: {
+            type:graphql.GraphQLBoolean
+        },
+        url: {
+            type:graphql.GraphQLString
+        }
+    })
+
+});

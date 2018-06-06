@@ -1,22 +1,23 @@
-const graphql  = require('graphql');
+import {
+    GraphQLID,
+    GraphQLNonNull
 
-const Rating = require('../../../schemas/ratings');
-const RatingType = require('../../types/ratings');
+} from 'graphql';
 
-const querySingleRating = {
+import Rating from '../../../schemas/ratings';
+import {RatingType} from '../../types/ratings';
+
+export default {
 
     type:RatingType,
     args:{
         id:{
-            name:ID,
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            name:'ID',
+            type: new GraphQLNonNull(GraphQLID)
         }
     },
-    resolve(root,params){
-        const rating = Rating.findbyId(params.id).exec()
-        return rating
+    resolve(root,params){  
+        return Rating.findbyId(params.id).exec()
     }
 
 }
-
-module.exports = querySingleRating;

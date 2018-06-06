@@ -1,22 +1,41 @@
-const graphql = require('graphql');
+import {
+    GraphQLInputObjectType,
+    GraphQLString,
+    GraphQLID,
+    GraphQLObjectType,
+    GraphQLNonNull
+  } from 'graphql';
 
 
-const GenreType = new graphql.GraphQLObjectType({
+export const GenreType = new GraphQLObjectType({
     name:"Genres",
     description:"Types of Genres",
     fields: () => ({
 
         _id: {
-            type:graphql.GraphQLNonNull(graphql.GraphQLID)
+            type:GraphQLNonNull(GraphQLID)
         },
         name:{
-            type:graphql.GraphQLString
+            type:GraphQLString
         },
         description:{
-            type:graphql.GraphQLString
+            type:GraphQLString
         }
 
     })
 })
 
-module.exports =  GenreType;
+export const GenreInputType = new GraphQLInputObjectType({
+    name:'GenreInput',
+    description:'Insert Genre',
+    fields: () => ({
+        name:{
+            type:GraphQLString
+        },
+        description:{
+            type:GraphQLString
+        }
+    })
+
+});
+

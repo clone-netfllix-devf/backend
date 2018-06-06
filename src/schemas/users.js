@@ -1,11 +1,11 @@
-var _mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 const SALT_WORK_FACTOR = 10;
 
 
-var Schema = _mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   'name': {
 
         type: String,
@@ -99,4 +99,4 @@ UserSchema.pre('save', function(next) {
     });
 };
 
-module.exports = _mongoose.model('user', UserSchema);
+export default mongoose.model('user', UserSchema);

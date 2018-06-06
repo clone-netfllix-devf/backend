@@ -1,20 +1,43 @@
-var _graphql = require('graphql');
+import {
+    GraphQLInputObjectType,
+    GraphQLString,
+    GraphQLID,
+	GraphQLObjectType,
+	GraphQLInt
+  } from 'graphql';
 
-var _Ratings = require('../../schemas/Ratings');
+import Ratings from '../../schemas/ratings';
 
-var RatingType = new _graphql.GraphQLObjectType({
+export const RatingType = new GraphQLObjectType({
 	name : "Ratings",
 	description : "Ratings in database",
-	fields : function fields(){
-		return {
+	fields :() => ({
+		 
 			name :{
-				type: _graphql.GraphQLString
+				type: GraphQLString
 			},
 			description : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
-		};
-	}
+			age : {
+				type : GraphQLInt,
+			  },
+		}),
 });
 
-module.exports =  RatingType;
+export const RatingInputType = new GraphQLInputObjectType({
+    name:'RatingInput',
+    description:'Insert Rating',
+    fields: () => ({
+        name:{
+            type:GraphQLString
+        },
+        description:{
+            type:GraphQLString
+		},
+		age : {
+			type : GraphQLInt,
+		  },
+    })
+
+});

@@ -1,7 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.default.Schema;
+import  mongoose  from 'mongoose';
 
-var RatingSchema = new Schema({
+const Schema =   mongoose.Schema({
   'name': {
     type : String,
     require: true
@@ -13,6 +12,7 @@ var RatingSchema = new Schema({
   'age' : {
     type : Number,
     require: true
-  },
+  }
+
 },{'collection': 'rating', timestamps: true});
-exports.default = moongose.default.model('rating',RatingSchema);
+export default mongoose.model('rating',Schema);

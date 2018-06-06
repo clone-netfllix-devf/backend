@@ -1,38 +1,75 @@
-var _graphql = require('graphql');
+import {
+    GraphQLInputObjectType,
+    GraphQLString,
+    GraphQLID,
+	GraphQLObjectType,
+	GraphQLBoolean
+  } from 'graphql';
 
-var _Users = require('../../schemas/usersdb');
+import Users from '../../schemas/users';
 
-var UserType = new _graphql.GraphQLObjectType({
+export const UserType = new GraphQLObjectType({
 	name : "Users",
 	description : "Users in database",
-	fields : function fields(){
-		return {
+	fields :() => ({
+		
 			name :{
-				type: _graphql.GraphQLString
+				type: GraphQLString
 			},
 			lastName : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
 			isPremium : {
-				type : _graphql.GraphQLBoolean
+				type : GraphQLBoolean
 			},
 			address : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
 			ccHash : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
 			email : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
 			password : {
-				type : _graphql.GraphQLString
+				type : GraphQLString
 			},
 			birthDate : {
-				type : _graphql.GraphQLDate
+				type : GraphQLString
 			},
-		};
-	}
+		}),
+	
 });
 
-module.exports =  UserType;
+export const UserInputType = new GraphQLInputObjectType({
+    name:'UserInput',
+    description:'Insert User',
+    fields: () => ({
+		name :{
+			type: GraphQLString
+		},
+		lastName : {
+			type : GraphQLString
+		},
+		isPremium : {
+			type : GraphQLBoolean
+		},
+		address : {
+			type : GraphQLString
+		},
+		ccHash : {
+			type : GraphQLString
+		},
+		email : {
+			type : GraphQLString
+		},
+		password : {
+			type : GraphQLString
+		},
+		birthDate : {
+			type : GraphQLString
+		},
+	}),
+
+});
+

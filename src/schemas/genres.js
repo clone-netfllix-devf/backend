@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
 
 var GenreSchema = new Schema({
   'name':{
@@ -11,4 +12,6 @@ var GenreSchema = new Schema({
         require: true
   }
 },{'collection': 'genre', timestamps: true});
-exports.default = moongose.default.model('genre',GenreSchema);
+
+
+export default mongoose.model('genre',GenreSchema);

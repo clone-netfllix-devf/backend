@@ -1,7 +1,7 @@
-var allUsers  = require('./all');
-var singleUsers = require('./single');
+import  allUsers  from './all';
+import singleUsers from './single';
 
-module.exports = {
+export default {
    allUsers,
    singleUsers
 }
