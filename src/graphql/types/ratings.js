@@ -2,7 +2,7 @@ import * as graphql from 'graphql';
 
 import Ratings from '../../schemas/ratings';
 
-var RatingType = new graphql.GraphQLObjectType({
+export const RatingType = new graphql.GraphQLObjectType({
 	name : "Ratings",
 	description : "Ratings in database",
 	fields :() => ({
@@ -16,4 +16,21 @@ var RatingType = new graphql.GraphQLObjectType({
 		}),
 });
 
-export default  RatingType;
+
+export const RatingInputType = new graphql.GraphQLInputObjectType({
+	    name:'RatingInput',
+	   description:'Insert Rating',
+	    fields: () => ({
+	        name:{
+	            type:GraphQLString
+	        },
+	        description:{
+	            type:GraphQLString
+			},
+			age : {
+				type : GraphQLInt,
+			  },
+	    })
+	
+	});
+

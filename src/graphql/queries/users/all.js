@@ -1,7 +1,7 @@
 import  * as graphql  from 'graphql';
 
 import  User from '../../../schemas/users';
-import  UserType from '../../types/users';
+import  {UserType} from '../../types/users';
 
 const queryAllUsers = {
 
