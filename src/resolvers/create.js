@@ -24,16 +24,16 @@ const tokenPrefix = 'JWT' // Prefix for HTTP header
     //             && user.last_name.toLowerCase() === password
     //     }
     // );ername
-    const user = User.find({'email':email }, function(err, user) {
+    const user = User.findOne({'email':email }, function(err, user) {
         if (err) {
 
             console.log('Signup error');
             return done(err);
         }
         console.log(user,"userpass");
-        console.log("LETS",user[0].password);
-        console.log("LETS",user[0].email);
-        bcrypt.compare(password, user[0].password, function(err, res) {
+        console.log("LETS",user.password);
+        console.log("LETS",user.email);
+        bcrypt.compare(password, user.password, function(err, res) {
             console.log("hola",user);
             console.log(password,"pass");
             console.log(res,"reseee");
@@ -42,7 +42,7 @@ const tokenPrefix = 'JWT' // Prefix for HTTP header
            if(res){
                console.log(res);
             const payload = {
-                email: user[0].email,
+                email: user.email,
                 password: res.password,
             }
             const token = jwt.sign(payload, secret, {
