@@ -2,7 +2,8 @@ import * as graphql from 'graphql';
 
 import Users from '../../schemas/users';
 
-var UserType = new graphql.GraphQLObjectType({
+
+export const  UserType = new graphql.GraphQLObjectType({
 	name : "Users",
 	description : "Users in database",
 	fields :() => ({
@@ -35,4 +36,35 @@ var UserType = new graphql.GraphQLObjectType({
 	
 });
 
-export default  UserType;
+export const UserInputType = new graphql.GraphQLInputObjectType({
+    name: 'AddUsers',
+    description: 'Types of Users',
+    fields: () => ({
+		name :{
+			type: graphql.GraphQLString
+		},
+		lastName : {
+			type : graphql.GraphQLString
+		},
+		isPremium : {
+			type : graphql.GraphQLBoolean
+		},
+		address : {
+			type : graphql.GraphQLString
+		},
+		ccHash : {
+			type : graphql.GraphQLString
+		},
+		email : {
+			type : graphql.GraphQLString
+		},
+		password : {
+			type : graphql.GraphQLString
+		},
+		birthDate : {
+			type : graphql.GraphQLString
+		},
+	}),
+    
+})
+
