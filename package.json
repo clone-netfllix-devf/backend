@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2"
+    "start":"node ./build/index.js",
+    "build": "babel -d ./build . --ignore node_modules  --copy-files",
+    "prebuild":"rm -rf build/*",
+    "server": "nodemon index.js --exec babel-node --presets es2015,stage-2"
   },
   "dependencies": {
     "bcrypt": "^2.0.1",
