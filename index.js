@@ -8,8 +8,13 @@ import {verifyToken} from './src/resolvers/verify';
 import schema from './src/graphql';
 import User  from './src/schemas/users';
 
+import cors from 'cors';
+
 const app = express();
 const port = process.env.PORT || 3000
+
+
+app.use(cors());
 
 mongoose.connect('mongodb://netflix:netflix2018@ds139970.mlab.com:39970/clone-netflix');
 const db = mongoose.connection;

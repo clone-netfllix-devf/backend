@@ -28,10 +28,16 @@ var _users = require('./src/schemas/users');
 
 var _users2 = _interopRequireDefault(_users);
 
+var _cors = require('cors');
+
+var _cors2 = _interopRequireDefault(_cors);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
+
+app.use((0, _cors2.default)());
 
 _mongoose2.default.connect('mongodb://netflix:netflix2018@ds139970.mlab.com:39970/clone-netflix');
 var db = _mongoose2.default.connection;
