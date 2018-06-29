@@ -19,7 +19,7 @@ export default {
     resolve(root,params){
         return User.findByIdAndUpdate(params.id,{$set:{...params.data}})
                         .then((user) => User.findById(user.id).exec())
-                        .catch((err) => new Error ('Couldnt upddate user data',err))
+                        .catch((err) => new Error ('Couldnt update user data',err))
     }
 
 

@@ -13,6 +13,8 @@ export default {
         }
     },
     resolve(root,params){
+        console.log('llego al mutation de user')
+        console.log(`con los parametros ${params.data}`)
         const user  = new User(params.data)
         const newUser = user.save();
         if(!newUser) throw new Error("Problema al crear user")

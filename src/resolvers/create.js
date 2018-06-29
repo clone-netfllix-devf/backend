@@ -8,38 +8,64 @@ import bcrypt from 'bcrypt';
  * @param {string} email 
  * @param {string} password
  */
-const expiresIn = '1d' // time to live
+const expiresIn = '2d' // time to live
 const secret = 'samplejwtauthgraphql' // secret key
 const tokenPrefix = 'JWT' // Prefix for HTTP header
 
  export const createToken = (email, password) => {
-    if (!email || !password) { // no credentials = fail
-        return false
-    }
-    const user = User.findOne({'email':email }).then((user) =>{
-  
-        const compare = new Promise((resolve,reject)=>{
-            bcrypt.compare(password, user.password, function(err, res) {
-                if(res){
-                    const payload = {
-                        email: user.email,
-                        id: user._id
+    return new Promise((resolve, reject) => {
+        if(!email || !password) {
+            return reject(false)
+        }
+        User.findOne({ 'email': email })
+            .then((user) => {
+                bcrypt.compare(password, user.password, function(err, res) {
+                    if(res) {
+                        const payload = {
+                            email: user.mail,
+                            id: user._id
+                        }
+                        const token = jwt.sign(payload, secret, {
+                            expiresIn
+                        })
+                        return resolve(token)
+                    } else {
+                        return reject(err)
                     }
-                    const token = jwt.sign(payload, secret, {
-                        expiresIn
-                    })
+                })
+            })
+            .catch(err => {
+                return reject(err)
+            });
+    });
 
-                    resolve(token)
-                }
-                else{
-                    reject(false)
-                }
-             });
-        })
+    // if (!email || !password) { // no credentials = fail
+    //     return false
+    // }
+    // const user = User.findOne({'email':email }).then((user) =>{
+  
+    //     const compare = new Promise((resolve,reject)=>{
+    //         bcrypt.compare(password, user.password, function(err, res) {
+    //             if(res){
+    //                 const payload = {
+    //                     email: user.email,
+    //                     id: user._id
+    //                 }
+    //                 const token = jwt.sign(payload, secret, {
+    //                     expiresIn
+    //                 })
 
-        return compare;
+    //                 resolve(token)
+    //             }
+    //             else{
+    //                 reject(false)
+    //             }
+    //          });
+    //     })
 
-    }).catch()
+    //     return compare;
 
-    return user
+    // }).catch()
+
+    // return user
 };
